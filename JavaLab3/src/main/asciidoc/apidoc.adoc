@@ -1,0 +1,10 @@
+
+.request
+
+{snippets}\publish_course\http-request.adoc
+response
+
+{snippets}\publish_course\http-response.adoc
+response-fields
+
+{snippets}\publish_course\response-fields.adoc
