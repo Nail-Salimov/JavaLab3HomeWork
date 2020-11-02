@@ -8,5 +8,6 @@ import java.util.List;
 public interface TransactionsService {
 
     Transaction createTransaction(List<Long> productsId, Long storeBranchId, Long customerId);
-    void returnPurchase(Long transactionId);
+    Transaction returnPurchase(Long transactionId);
+
 }

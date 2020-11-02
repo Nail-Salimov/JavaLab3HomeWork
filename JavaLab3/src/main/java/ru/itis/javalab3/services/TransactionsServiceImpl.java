@@ -72,7 +72,7 @@ public class TransactionsServiceImpl implements TransactionsService{
     }
 
     @Override
-    public void returnPurchase(Long transactionId) {
+    public Transaction returnPurchase(Long transactionId) {
         Optional<Transaction> optionalTransaction = transactionsRepository.findById(transactionId);
         if (!optionalTransaction.isPresent()){
             throw new IllegalArgumentException("transaction with id not found");
@@ -83,6 +83,6 @@ public class TransactionsServiceImpl implements TransactionsService{
             throw new IllegalArgumentException("transaction is already RETURNED");
         }
         transaction.setState(TransactionState.RETURNED);
-        transactionsRepository.save(transaction);
+        return transactionsRepository.save(transaction);
     }
 }

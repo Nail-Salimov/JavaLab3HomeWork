@@ -14,7 +14,7 @@ import java.util.List;
 @RepositoryRestResource
 public interface ProductsRepository extends JpaRepository<Product, Long> {
 
-    @RestResource(path = "location", rel = "location")
+    @RestResource(path = "cheaper", rel = "cheaper")
     @Query("select p from Product p WHERE p.price < :price")
     List<Product> getLessThan(@Param("price") Integer price);
 

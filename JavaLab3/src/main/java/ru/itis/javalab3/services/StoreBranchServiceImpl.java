@@ -3,6 +3,7 @@ package ru.itis.javalab3.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.itis.javalab3.entities.StoreBranch;
+import ru.itis.javalab3.entities.StoreBranchState;
 import ru.itis.javalab3.repositories.LocalProductsRepository;
 import ru.itis.javalab3.repositories.StoreBranchesRepository;
 
@@ -18,7 +19,7 @@ public class StoreBranchServiceImpl implements StoreBranchService{
     private LocalProductsRepository localProductsRepository;
 
     @Override
-    public void close(Long storeBranchId) {
+    public StoreBranch close(Long storeBranchId) {
         Optional<StoreBranch> optionalStoreBranch = storeBranchesRepository.findById(storeBranchId);
         if (!optionalStoreBranch.isPresent()){
             throw new IllegalArgumentException("StoreBranch with this id is not exist");
@@ -27,6 +28,8 @@ public class StoreBranchServiceImpl implements StoreBranchService{
         StoreBranch storeBranch = optionalStoreBranch.get();
 
         localProductsRepository.deleteAll(storeBranch.getLocalProductSet());
-        storeBranchesRepository.delete(storeBranch);
+        storeBranch.setState(StoreBranchState.CLOSE);
+        storeBranchesRepository.save(storeBranch);
+        return storeBranch;
     }
 }

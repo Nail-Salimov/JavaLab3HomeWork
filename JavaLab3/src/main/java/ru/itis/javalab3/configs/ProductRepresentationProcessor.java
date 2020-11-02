@@ -20,7 +20,7 @@ public class ProductRepresentationProcessor implements RepresentationModelProces
         Product product = model.getContent();
         if(product != null){
             model.add(links.linkToItemResource(Product.class, product.getId())
-                    .withRel("test"));
+                    .withRel("cheap"));
         }
         return model;
     }

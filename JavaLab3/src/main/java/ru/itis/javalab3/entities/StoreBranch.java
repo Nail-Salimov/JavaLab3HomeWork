@@ -22,4 +22,6 @@ public class StoreBranch {
 
     @OneToMany(mappedBy = "storeBranch")
     private Set<LocalProduct> localProductSet;
+
+    private StoreBranchState state;
 }

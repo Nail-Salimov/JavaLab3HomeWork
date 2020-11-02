@@ -1,10 +1,50 @@
 
+==== Возврат товара
+Можно вернуть покупку, если оно находится в состоянии NOT_RETURNED
+
 .request
 
-{snippets}\publish_course\http-request.adoc
-response
+include::{snippets}\return_transaction\http-request.adoc[]
 
-{snippets}\publish_course\http-response.adoc
-response-fields
+.response
 
-{snippets}\publish_course\response-fields.adoc
+include::{snippets}\return_transaction\http-response.adoc[]
+
+.response-fields
+
+include::{snippets}\return_transaction\response-fields.adoc[]
+
+
+
+
+==== Покупка товара
+При покупки товара общее количество доступных для покупки снижается на 1
+
+.request
+
+include::{snippets}\buy_local_product\http-request.adoc[]
+
+.response
+
+include::{snippets}\buy_local_product\http-response.adoc[]
+
+.response-fields
+
+include::{snippets}\buy_local_product\response-fields.adoc[]
+
+
+==== Закрытие магазина
+Можно закрыть отделение магазина, если оно находится в состояние OPEN, все товары, находящиеся в этом магазине, спишутся
+
+.request
+
+include::{snippets}\close_store_branch\http-request.adoc[]
+
+.response
+
+include::{snippets}\close_store_branch\http-response.adoc[]
+
+.response-fields
+
+include::{snippets}\close_store_branch\response-fields.adoc[]
+

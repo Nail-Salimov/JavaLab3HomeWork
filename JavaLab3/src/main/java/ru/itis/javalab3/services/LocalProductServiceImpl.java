@@ -16,7 +16,7 @@ public class LocalProductServiceImpl implements LocalProductService{
     private LocalProductsRepository localProductsRepository;
 
     @Override
-    public void buyLocalProduct(Long id) {
+    public LocalProduct buyLocalProduct(Long id) {
         Optional<LocalProduct> optionalLocalProduct = localProductsRepository.findById(id);
         if(!optionalLocalProduct.isPresent()){
             throw new IllegalArgumentException("LocalProduct with id not exist");
@@ -27,6 +27,6 @@ public class LocalProductServiceImpl implements LocalProductService{
             throw new IllegalArgumentException("LocalProduct is out of stock");
         }
         localProduct.setCount(localProduct.getCount()-1);
-        localProductsRepository.save(localProduct);
+        return localProductsRepository.save(localProduct);
     }
 }

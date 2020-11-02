@@ -1,6 +1,8 @@
 package ru.itis.javalab3.services;
 
+import ru.itis.javalab3.entities.LocalProduct;
+
 public interface LocalProductService {
 
-    void buyLocalProduct(Long id);
+    LocalProduct buyLocalProduct(Long id);
 }
