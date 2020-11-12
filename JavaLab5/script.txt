@@ -1,0 +1,164 @@
+//use social_network
+
+/*
+db.user.insert(
+    {
+       name : 'Oleg',
+       surname : 'Some surname',
+       age : 30,
+       sex : 'Man',
+       confirmed : true,
+       tags: ['some1', 'some2', 'ice']
+    }
+    );
+ */
+/*
+db.user.insert(
+    {
+        name : 'Max',
+        surname : 'Some Max',
+        age : 27,
+        sex : 'Man',
+        confirmed : false,
+        job : 'postman'
+    }
+    );
+ */
+/*
+db.user.insert(
+    {
+        name : 'Max2',
+        surname : 'Some Max2',
+        age : 27,
+        sex : 'Man',
+        confirmed : true,
+        job : 'postman'
+    }
+    );
+
+ */
+/*
+db.user.insert(
+    {
+        name : 'Max2',
+        surname : 'Some Max2',
+        age : 27,
+        sex : 'Man',
+        confirmed : false,
+        job : 'postman'
+    }
+    );
+
+ */
+/*
+db.user.insert(
+    {
+        name : 'OOO',
+        nickname: '0_0',
+        sex : 'Man',
+        confirmed : false,
+        born : 2000
+    }
+    );
+
+*/
+/*
+db.user.find(
+    {
+        confirmed: false
+    }
+    )
+
+ */
+
+db.user.find(
+    {
+        $or: [
+            {
+                surname: {$exists: false}
+            },
+            {
+                name: {$exists: true},
+                $expr: {$gt: [{$strLenCP: "$name"}, 3]}
+            }
+        ]
+    }
+    );
+
+db.user.find(
+    {
+        surname: {$exists: true},
+        name: {$exists: true},
+        $expr: {$gt: [{$strLenCP: "$name"}, 3]}
+    },
+    {
+        _id: 0,
+        sex: 0
+    }
+    );
+
+db.user.find(
+    {},
+    {
+        _id: 0
+    }
+    ).sort(
+    {
+        name: -1,
+        confirmed: 1
+    }
+    );
+
+db.user.update(
+    {
+        name: 'Max'
+    },
+    {
+        $set: {
+            mobile_phone: "phone"
+        }
+    }
+    );
+
+db.user.update(
+    {
+        name: 'Max'
+    },
+    {
+        $set:
+            {
+                auto: [
+                    {
+                        number: 'a133sa',
+                        model: 'kia'
+                    },
+                    {
+                        number: 'a133sb',
+                        model: 'lada '
+                    }
+                ]
+            }
+    }
+    );
+
+db.city.insert(
+    {
+        name : 'Kazan'
+    }
+    );
+
+db.user.update(
+    {
+        _id : ObjectId('5faaab24700139301b4d8eb5')
+    },
+    {
+        $set : {
+            city : {
+                from : ObjectId('5faab487700139301b4d8eb8')
+            }
+        }
+    }
+
+    );
+
+
